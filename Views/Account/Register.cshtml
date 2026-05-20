@@ -3,38 +3,50 @@
     ViewData["Title"] = "Register";
 }
 
-<div class="row justify-content-center">
-    <div class="col-md-6">
-        <div class="card mt-5">
-            <div class="card-header text-center">
-                <h2>@ViewData["Title"]</h2>
+<div class="auth-container">
+    <div class="auth-card register-card">
+        <div class="auth-header">
+            <div class="auth-icon">
+                <i class="fas fa-user-plus"></i>
             </div>
-            <div class="card-body">
-                <form asp-controller="Account" asp-action="Register" method="post">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group mb-3">
-                        <label asp-for="Email" class="control-label"></label>
-                        <input asp-for="Email" class="form-control" />
-                        <span asp-validation-for="Email" class="text-danger"></span>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label asp-for="Password" class="control-label"></label>
-                        <input asp-for="Password" class="form-control" />
-                        <span asp-validation-for="Password" class="text-danger"></span>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label asp-for="ConfirmPassword" class="control-label"></label>
-                        <input asp-for="ConfirmPassword" class="form-control" />
-                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-                    </div>
-                    <div class="form-group mb-3 text-center">
-                        <button type="submit" class="btn btn-primary w-100">Register</button>
-                    </div>
-                </form>
+            <h2>@ViewData["Title"]</h2>
+            <p>Yeni bir hesap oluşturun</p>
+        </div>
+        
+        <form asp-controller="Account" asp-action="Register" method="post" class="auth-form">
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+            
+            <div class="form-floating mb-4">
+                <input asp-for="Email" class="form-control form-control-lg" placeholder="email@example.com" />
+                <label asp-for="Email" class="control-label">
+                    <i class="fas fa-envelope"></i> Email Adresi
+                </label>
+                <span asp-validation-for="Email" class="text-danger small"></span>
             </div>
-            <div class="card-footer text-center">
-                Already have an account? <a asp-controller="Account" asp-action="Login">Log in</a>
+            
+            <div class="form-floating mb-3">
+                <input asp-for="Password" class="form-control form-control-lg" placeholder="Password" />
+                <label asp-for="Password" class="control-label">
+                    <i class="fas fa-lock"></i> Şifre
+                </label>
+                <span asp-validation-for="Password" class="text-danger small"></span>
             </div>
+            
+            <div class="form-floating mb-4">
+                <input asp-for="ConfirmPassword" class="form-control form-control-lg" placeholder="Confirm Password" />
+                <label asp-for="ConfirmPassword" class="control-label">
+                    <i class="fas fa-lock"></i> Şifreyi Onayla
+                </label>
+                <span asp-validation-for="ConfirmPassword" class="text-danger small"></span>
+            </div>
+            
+            <button type="submit" class="btn btn-success btn-lg w-100 auth-btn">
+                <i class="fas fa-user-plus"></i> Kayıt Ol
+            </button>
+        </form>
+        
+        <div class="auth-footer">
+            <p>Zaten hesabınız var mı? <a asp-controller="Account" asp-action="Login" class="auth-link">Giriş yapın</a></p>
         </div>
     </div>
 </div>
