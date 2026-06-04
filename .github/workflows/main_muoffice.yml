@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy ASP.Net Core app to Azure Web App - MUOffice
+name: Build and deploy ASP.Net Core app to Azure Web App - muoffice
 
 on:
   push:
@@ -21,7 +21,7 @@ jobs:
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '10.0.x'
+          dotnet-version: '10.x'
 
       - name: Build with dotnet
         run: dotnet build --configuration Release
@@ -55,15 +55,15 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_11C41C60F5F34D21B9DE43C4AA10B092 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_6E874DF066A64F11A47768901C95C06D }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_F585E2E5F47D40BDB5585EE62BC25D3A }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_E9032853121F4988A44DDE02259FD905 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_D409FCA1F83941B8B3C2B938C47FDACF }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_734B2309F7024018BAA5380734A21383 }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'MUOffice'
+          app-name: 'muoffice'
           slot-name: 'Production'
           package: .
           
