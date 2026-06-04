@@ -26,7 +26,7 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// Seed Roles
+// Seed Roles and Rooms
 using (var scope = app.Services.CreateScope())
 {
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
@@ -37,6 +37,18 @@ using (var scope = app.Services.CreateScope())
         {
             await roleManager.CreateAsync(new IdentityRole(roleName));
         }
+    }
+
+    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    if (!context.Rooms.Any())
+    {
+        context.Rooms.AddRange(
+            new Room { Name = "Toplantı Odası A", Description = "10 kişilik küçük toplantı odası", Capacity = 10 },
+            new Room { Name = "Konferans Salonu", Description = "50 kişilik büyük konferans salonu", Capacity = 50 },
+            new Room { Name = "Çalışma Odası 1", Description = "Sessiz çalışma alanı", Capacity = 4 },
+            new Room { Name = "Çalışma Odası 2", Description = "Grup çalışma alanı", Capacity = 6 }
+        );
+        await context.SaveChangesAsync();
     }
 }
 

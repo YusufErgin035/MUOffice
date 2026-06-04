@@ -27,10 +27,26 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">
-                                <i class="fas fa-shield-alt"></i> Gizlilik
+                            <a class="nav-link" asp-controller="Room" asp-action="Index">
+                                <i class="fas fa-door-open"></i> Odalar
                             </a>
                         </li>
+                        @if (User.Identity?.IsAuthenticated == true)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Reservation" asp-action="Index">
+                                    <i class="fas fa-calendar-check"></i> Rezervasyonlarım
+                                </a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Admin" asp-action="Index">
+                                    <i class="fas fa-cog"></i> Admin Paneli
+                                </a>
+                            </li>
+                        }
                     </ul>
                     <ul class="navbar-nav">
                         @if (User.Identity.IsAuthenticated)

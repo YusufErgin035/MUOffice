@@ -1,0 +1,48 @@
+@model IEnumerable<WebProgProjc.Models.Room>
+@{
+    ViewData["Title"] = "Odalar";
+}
+
+<div class="container py-5">
+    <h2 class="mb-4 fw-bold">Müsait Odalar</h2>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">Şu an aktif oda bulunmamaktadır.</div>
+    }
+    else
+    {
+        <div class="row g-4">
+            @foreach (var room in Model)
+            {
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">@room.Name</h5>
+                            <p class="card-text text-muted">@room.Description</p>
+                            <p class="card-text">
+                                <i class="fas fa-users me-1"></i>
+                                <strong>Kapasite:</strong> @room.Capacity kişi
+                            </p>
+                        </div>
+                        <div class="card-footer bg-transparent border-0 pb-3">
+                            @if (User.Identity?.IsAuthenticated == true)
+                            {
+                                <a asp-controller="Reservation" asp-action="Create" asp-route-roomId="@room.Id"
+                                   class="btn btn-primary w-100">
+                                    <i class="fas fa-calendar-plus me-1"></i> Rezervasyon Yap
+                                </a>
+                            }
+                            else
+                            {
+                                <a asp-controller="Account" asp-action="Login" class="btn btn-outline-primary w-100">
+                                    Rezervasyon için giriş yapın
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
