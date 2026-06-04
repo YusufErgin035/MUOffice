@@ -31,7 +31,7 @@
                     <tr>
                         <th>Oda</th>
                         <th>Başlangıç</th>
-                        <th>Bitiş</th>
+                        <th class="d-none d-sm-table-cell">Bitiş</th>
                         <th>Durum</th>
                         <th></th>
                     </tr>
@@ -42,7 +42,7 @@
                         <tr>
                             <td class="fw-semibold">@r.Room.Name</td>
                             <td>@r.StartTime.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</td>
-                            <td>@r.EndTime.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</td>
+                            <td class="d-none d-sm-table-cell">@r.EndTime.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</td>
                             <td>
                                 @if (r.IsCancelled)
                                 {
