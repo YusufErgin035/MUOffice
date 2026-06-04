@@ -29,26 +29,34 @@ var app = builder.Build();
 // Seed Roles and Rooms
 using (var scope = app.Services.CreateScope())
 {
-    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-    string[] roleNames = { "Admin", "User" };
-    foreach (var roleName in roleNames)
+    try
     {
-        if (!await roleManager.RoleExistsAsync(roleName))
+        var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+        await context.Database.MigrateAsync();
+
+        var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+        string[] roleNames = { "Admin", "User" };
+        foreach (var roleName in roleNames)
         {
-            await roleManager.CreateAsync(new IdentityRole(roleName));
+            if (!await roleManager.RoleExistsAsync(roleName))
+                await roleManager.CreateAsync(new IdentityRole(roleName));
+        }
+
+        if (!context.Rooms.Any())
+        {
+            context.Rooms.AddRange(
+                new Room { Name = "Toplantı Odası A", Description = "10 kişilik küçük toplantı odası", Capacity = 10 },
+                new Room { Name = "Konferans Salonu", Description = "50 kişilik büyük konferans salonu", Capacity = 50 },
+                new Room { Name = "Çalışma Odası 1", Description = "Sessiz çalışma alanı", Capacity = 4 },
+                new Room { Name = "Çalışma Odası 2", Description = "Grup çalışma alanı", Capacity = 6 }
+            );
+            await context.SaveChangesAsync();
         }
     }
-
-    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    if (!context.Rooms.Any())
+    catch (Exception ex)
     {
-        context.Rooms.AddRange(
-            new Room { Name = "Toplantı Odası A", Description = "10 kişilik küçük toplantı odası", Capacity = 10 },
-            new Room { Name = "Konferans Salonu", Description = "50 kişilik büyük konferans salonu", Capacity = 50 },
-            new Room { Name = "Çalışma Odası 1", Description = "Sessiz çalışma alanı", Capacity = 4 },
-            new Room { Name = "Çalışma Odası 2", Description = "Grup çalışma alanı", Capacity = 6 }
-        );
-        await context.SaveChangesAsync();
+        var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "Veritabanı başlatılırken hata oluştu.");
     }
 }
 
