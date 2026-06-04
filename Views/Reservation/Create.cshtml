@@ -13,7 +13,10 @@
                     </h4>
 
                     <form asp-action="Create" method="post">
-                        <div asp-validation-summary="All" class="alert alert-danger d-none" id="validationSummary"></div>
+                        @if (!ViewData.ModelState.IsValid && ViewData.ModelState.ErrorCount > 0)
+                        {
+                            <div asp-validation-summary="ModelOnly" class="alert alert-danger mb-3"></div>
+                        }
 
                         <div class="mb-3">
                             <label asp-for="RoomId" class="form-label fw-semibold">Oda</label>
@@ -50,10 +53,4 @@
     </div>
 </div>
 
-@section Scripts {
-    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
-    <script>
-        const summary = document.querySelector('[data-valmsg-summary]') ?? document.getElementById('validationSummary');
-        if (summary && summary.querySelectorAll('li').length > 0) summary.classList.remove('d-none');
-    </script>
-}
+@section Scripts { @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); } }
