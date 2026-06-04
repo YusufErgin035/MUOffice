@@ -15,10 +15,10 @@
         @if (User.Identity.IsAuthenticated)
         {
             <div class="hero-buttons">
-                <a href="#" class="btn btn-primary btn-lg hero-btn">
+                <a asp-controller="Room" asp-action="Index" class="btn btn-primary btn-lg hero-btn">
                     <i class="fas fa-search"></i> Ofisleri Keşfet
                 </a>
-                <a href="#" class="btn btn-outline-light btn-lg hero-btn">
+                <a asp-controller="Reservation" asp-action="Index" class="btn btn-outline-light btn-lg hero-btn">
                     <i class="fas fa-calendar"></i> Rezervasyonlarım
                 </a>
             </div>

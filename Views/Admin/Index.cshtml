@@ -7,6 +7,54 @@
 <div class="container py-5">
     <h2 class="fw-bold mb-4">Admin Paneli</h2>
 
+    <!-- İstatistik Kartları -->
+    <div class="row g-3 mb-5">
+        <div class="col-6 col-md-3">
+            <div class="card text-center border-0 shadow-sm h-100">
+                <div class="card-body py-4">
+                    <div class="stat-icon mb-2">
+                        <i class="fas fa-calendar-alt fa-2x text-primary"></i>
+                    </div>
+                    <h3 class="fw-bold mb-0">@ViewBag.TotalReservations</h3>
+                    <p class="text-muted small mb-0">Toplam Rezervasyon</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="card text-center border-0 shadow-sm h-100">
+                <div class="card-body py-4">
+                    <div class="stat-icon mb-2">
+                        <i class="fas fa-check-circle fa-2x text-success"></i>
+                    </div>
+                    <h3 class="fw-bold mb-0">@ViewBag.ActiveReservations</h3>
+                    <p class="text-muted small mb-0">Aktif Rezervasyon</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="card text-center border-0 shadow-sm h-100">
+                <div class="card-body py-4">
+                    <div class="stat-icon mb-2">
+                        <i class="fas fa-door-open fa-2x text-warning"></i>
+                    </div>
+                    <h3 class="fw-bold mb-0">@ViewBag.TotalRooms</h3>
+                    <p class="text-muted small mb-0">Aktif Oda</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="card text-center border-0 shadow-sm h-100">
+                <div class="card-body py-4">
+                    <div class="stat-icon mb-2">
+                        <i class="fas fa-calendar-day fa-2x text-info"></i>
+                    </div>
+                    <h3 class="fw-bold mb-0">@ViewBag.ThisMonthReservations</h3>
+                    <p class="text-muted small mb-0">Bu Ay</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     @if (TempData["Success"] != null)
     {
         <div class="alert alert-success alert-dismissible fade show">

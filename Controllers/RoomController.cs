@@ -15,9 +15,20 @@ public class RoomController : Controller
         _context = context;
     }
 
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(string? search, int? minCapacity)
     {
-        var rooms = await _context.Rooms.Where(r => r.IsActive).ToListAsync();
+        var query = _context.Rooms.Where(r => r.IsActive);
+
+        if (!string.IsNullOrWhiteSpace(search))
+            query = query.Where(r => r.Name.Contains(search) || (r.Description != null && r.Description.Contains(search)));
+
+        if (minCapacity.HasValue && minCapacity > 0)
+            query = query.Where(r => r.Capacity >= minCapacity.Value);
+
+        ViewBag.Search = search;
+        ViewBag.MinCapacity = minCapacity;
+
+        var rooms = await query.ToListAsync();
         return View(rooms);
     }
 

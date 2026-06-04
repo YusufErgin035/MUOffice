@@ -48,8 +48,15 @@ public class ReservationController : Controller
         if (model.EndTime <= model.StartTime)
             ModelState.AddModelError("EndTime", "Bitiş saati başlangıç saatinden sonra olmalıdır.");
 
-        if (model.StartTime < DateTime.Now)
-            ModelState.AddModelError("StartTime", "Başlangıç saati geçmişte olamaz.");
+        if (model.StartTime < DateTime.Now.AddMinutes(30))
+            ModelState.AddModelError("StartTime", "Rezervasyon en az 30 dakika önceden yapılmalıdır.");
+
+        var duration = model.EndTime - model.StartTime;
+        if (duration.TotalHours > 8)
+            ModelState.AddModelError("EndTime", "Rezervasyon süresi maksimum 8 saat olabilir.");
+
+        if (duration.TotalMinutes < 30)
+            ModelState.AddModelError("EndTime", "Rezervasyon süresi en az 30 dakika olmalıdır.");
 
         if (ModelState.IsValid)
         {

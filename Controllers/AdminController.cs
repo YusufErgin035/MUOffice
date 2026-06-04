@@ -24,8 +24,15 @@ public class AdminController : Controller
             .ToListAsync();
 
         var rooms = await _context.Rooms.ToListAsync();
+        var now = DateTime.UtcNow;
 
         ViewBag.Rooms = rooms;
+        ViewBag.TotalReservations = reservations.Count;
+        ViewBag.ActiveReservations = reservations.Count(r => !r.IsCancelled && r.EndTime > now);
+        ViewBag.TotalRooms = rooms.Count(r => r.IsActive);
+        ViewBag.ThisMonthReservations = reservations.Count(r =>
+            r.CreatedAt.Year == now.Year && r.CreatedAt.Month == now.Month);
+
         return View(reservations);
     }
 
