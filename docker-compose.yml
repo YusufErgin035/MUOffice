@@ -1,15 +1,15 @@
 services:
-  sqlserver:
-    image: mcr.microsoft.com/mssql/server:2022-latest
-    container_name: muoffice-sqlserver
+  postgres:
+    image: postgres:16-alpine
+    container_name: muoffice-postgres
     ports:
-      - "1433:1433"
+      - "5432:5432"
     environment:
-      - ACCEPT_EULA=Y
-      - SA_PASSWORD=MUOffice@2026
-      - MSSQL_PID=Developer
+      POSTGRES_DB: WebProgProjc
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: MUOffice@2026
     volumes:
-      - sqlserver-data:/var/opt/mssql
+      - postgres-data:/var/lib/postgresql/data
 
 volumes:
-  sqlserver-data:
+  postgres-data:
