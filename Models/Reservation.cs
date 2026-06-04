@@ -25,6 +25,9 @@ public class Reservation
 
     public bool IsCancelled { get; set; } = false;
 
+    [Display(Name = "İptal Nedeni")]
+    public string? CancellationReason { get; set; }
+
     [ForeignKey(nameof(RoomId))]
     public Room Room { get; set; } = null!;
 

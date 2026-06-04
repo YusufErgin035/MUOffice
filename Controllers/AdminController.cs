@@ -38,12 +38,13 @@ public class AdminController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> CancelReservation(int id)
+    public async Task<IActionResult> CancelReservation(int id, string reason)
     {
         var reservation = await _context.Reservations.FindAsync(id);
         if (reservation == null) return NotFound();
 
         reservation.IsCancelled = true;
+        reservation.CancellationReason = string.IsNullOrWhiteSpace(reason) ? null : reason;
         await _context.SaveChangesAsync();
         TempData["Success"] = "Rezervasyon iptal edildi.";
         return RedirectToAction(nameof(Index));
