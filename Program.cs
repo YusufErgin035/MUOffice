@@ -22,7 +22,14 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.AccessDeniedPath = "/Account/AccessDenied";
 });
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(options =>
+{
+    options.Filters.Add(new Microsoft.AspNetCore.Mvc.ResponseCacheAttribute
+    {
+        NoStore = true,
+        Location = Microsoft.AspNetCore.Mvc.ResponseCacheLocation.None
+    });
+});
 
 var app = builder.Build();
 

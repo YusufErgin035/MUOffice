@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WebProgProjc.styles.css" asp-append-version="true" />
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        <meta id="auth-check" data-authenticated="true" />
+    }
 </head>
 <body>
     <header>
@@ -95,5 +99,12 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    <script>
+        window.addEventListener('pageshow', function (event) {
+            if (event.persisted && document.getElementById('auth-check')) {
+                window.location.replace('/');
+            }
+        });
+    </script>
 </body>
 </html>
