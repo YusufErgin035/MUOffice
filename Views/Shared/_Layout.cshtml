@@ -13,6 +13,12 @@
     {
         <meta id="auth-check" data-authenticated="true" />
     }
+    <script>
+        (function () {
+            var t = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-bs-theme', t);
+        })();
+    </script>
 </head>
 <body>
     <header>
@@ -52,7 +58,12 @@
                             </li>
                         }
                     </ul>
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav align-items-center">
+                        <li class="nav-item">
+                            <button class="nav-link btn btn-link theme-toggle" id="themeToggle" title="Tema değiştir">
+                                <i id="themeIcon" class="fas fa-sun"></i>
+                            </button>
+                        </li>
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
