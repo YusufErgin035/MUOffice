@@ -9,7 +9,7 @@ html {
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #27ae60;
 }
 
 html {
@@ -40,7 +40,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: calc(100vh - 200px);
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
   padding: 20px;
 }
 
@@ -55,7 +55,7 @@ body {
 }
 
 .auth-card.login-card {
-  border-top: 4px solid #667eea;
+  border-top: 4px solid #27ae60;
 }
 
 .auth-card.register-card {
@@ -82,7 +82,7 @@ body {
   width: 70px;
   height: 70px;
   margin: 0 auto 20px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -141,8 +141,8 @@ body {
 
 .form-floating > .form-control:focus,
 .form-floating > .form-select:focus {
-  border-color: #667eea;
-  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.15);
+  border-color: #27ae60;
+  box-shadow: 0 0 0 0.2rem rgba(39, 174, 96, 0.15);
 }
 
 .form-floating > label {
@@ -154,7 +154,7 @@ body {
 
 .form-floating > .form-control:focus ~ label,
 .form-floating > .form-select:focus ~ label {
-  color: #667eea;
+  color: #27ae60;
 }
 
 .form-check-input {
@@ -167,8 +167,8 @@ body {
 }
 
 .form-check-input:checked {
-  background-color: #667eea;
-  border-color: #667eea;
+  background-color: #27ae60;
+  border-color: #27ae60;
 }
 
 .form-check-label {
@@ -179,7 +179,7 @@ body {
 }
 
 .form-check-label:hover {
-  color: #667eea;
+  color: #27ae60;
 }
 
 .auth-btn {
@@ -194,12 +194,12 @@ body {
 }
 
 .btn-primary.auth-btn {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
 }
 
 .btn-primary.auth-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 5px 20px rgba(39, 174, 96, 0.4);
 }
 
 .btn-success.auth-btn {
@@ -225,14 +225,14 @@ body {
 }
 
 .auth-link {
-  color: #667eea;
+  color: #27ae60;
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
 }
 
 .auth-link:hover {
-  color: #764ba2;
+  color: #229954;
   text-decoration: underline;
 }
 
@@ -267,7 +267,7 @@ body {
 
 /* Navbar Styling */
 .navbar {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  background: linear-gradient(135deg, #27ae60 0%, #229954 100%) !important;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 15px 0;
 }
@@ -309,7 +309,7 @@ body {
 
 /* Hero Section */
 .hero-section {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
   color: white;
   padding: 100px 20px;
   text-align: center;
@@ -404,7 +404,7 @@ body {
 
 .btn-primary.hero-btn {
   background-color: white;
-  color: #667eea;
+  color: #27ae60;
   border: 2px solid white;
 }
 
@@ -420,7 +420,7 @@ body {
 
 .btn-outline-light.hero-btn:hover {
   background-color: white;
-  color: #667eea;
+  color: #27ae60;
   border-color: white;
 }
 
@@ -439,7 +439,7 @@ body {
 }
 
 .section-title i {
-  color: #667eea;
+  color: #27ae60;
   margin-right: 12px;
 }
 
@@ -456,14 +456,14 @@ body {
 
 .feature-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 15px 35px rgba(102, 126, 234, 0.2);
+  box-shadow: 0 15px 35px rgba(39, 174, 96, 0.2);
 }
 
 .feature-icon {
   width: 70px;
   height: 70px;
   margin: 0 auto 20px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -504,7 +504,7 @@ body {
 
 /* Stats Section */
 .stats-section {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
   color: white;
   padding: 80px 20px;
   position: relative;
@@ -557,11 +557,11 @@ body {
 }
 
 .cta-box {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
   color: white;
   padding: 60px 40px;
   border-radius: 15px;
-  box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 10px 40px rgba(39, 174, 96, 0.3);
 }
 
 .cta-box h2 {
@@ -599,7 +599,7 @@ body {
 
 .cta-buttons .btn-primary {
   background-color: white;
-  color: #667eea;
+  color: #27ae60;
   border-color: white;
 }
 
@@ -619,7 +619,7 @@ body {
 
 .cta-buttons .btn-outline-primary:hover {
   background-color: white;
-  color: #667eea;
+  color: #27ae60;
   border-color: white;
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
@@ -627,7 +627,7 @@ body {
 
 /* Footer Styling */
 .footer {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
   color: rgba(255, 255, 255, 0.8);
   padding: 24px 20px;
   margin-top: 80px;
@@ -646,7 +646,7 @@ body {
 /* Mobile Navbar */
 @media (max-width: 991.98px) {
   #mainNavbar {
-    background: linear-gradient(135deg, #5a6fd6 0%, #6b3fa0 100%);
+    background: linear-gradient(135deg, #229954 0%, #1d7348 100%);
     border-radius: 0 0 12px 12px;
     padding: 8px 12px 12px;
     margin-top: 4px;
